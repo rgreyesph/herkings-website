@@ -1,75 +1,101 @@
-/* Basic Navbar Styling */
+/* --- Main Navbar Container --- */
 .navbar {
-  background-color: #333;
-  overflow: hidden;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 40px; /* More horizontal padding */
+  background-color: #20232a;
+  height: 60px;
+  width: 100%;
+
+  /* --- Sticky Header --- */
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Ensures it stays on top of other content */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
 }
 
+/* --- Logo Styling --- */
 .nav-logo {
-  color: white;
+  color: #61dafb; /* React blue for a nice accent */
   font-size: 24px;
+  font-weight: bold;
   text-decoration: none;
 }
 
+/* --- Navigation Links Menu --- */
 .nav-menu {
   list-style-type: none;
-  margin: 0;
-  padding: 0;
   display: flex;
+  align-items: center;
+  height: 100%;
 }
 
 .nav-item {
-  padding: 14px 16px;
+  height: 100%;
 }
 
-.nav-link {
+.nav-link, .dropbtn {
+  display: flex;
+  align-items: center;
+  height: 100%;
   color: white;
   text-decoration: none;
+  padding: 0 20px; /* Spacing between links */
+  font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover */
 }
 
 .nav-link:hover {
-  color: #ddd;
+  background-color: #33373e;
+  color: #61dafb;
 }
 
-/* Dropdown Styling */
+/* --- Dropdown Specific Styling --- */
 .dropdown {
   position: relative;
-  display: inline-block;
+  height: 100%;
 }
 
 .dropbtn {
-  background-color: inherit;
-  color: white;
+  background-color: transparent;
   border: none;
-  font-size: 16px;
   cursor: pointer;
-  padding: 14px 16px;
-  font-family: inherit;
+  font-family: inherit; /* Use the same font as the rest of the site */
+}
+
+.dropbtn:hover {
+  background-color: #33373e;
+  color: #61dafb;
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  background-color: #33373e;
+  min-width: 180px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
   z-index: 1;
+  border-radius: 8px; /* Rounded corners */
+  overflow: hidden; /* Ensures content respects the border radius */
+  margin-top: -1px; /* Aligns dropdown nicely */
 }
 
 .dropdown-content a {
-  color: black;
+  color: white;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
+  text-align: left;
+  transition: background-color 0.3s ease;
 }
 
 .dropdown-content a:hover {
-  background-color: #f1f1f1;
+  background-color: #61dafb;
+  color: #20232a;
 }
 
+/* This makes the dropdown appear on hover */
 .dropdown:hover .dropdown-content {
   display: block;
 }
