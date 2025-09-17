@@ -3,27 +3,25 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 40px; /* More horizontal padding */
+  padding: 0 40px;
   background-color: #20232a;
   height: 60px;
   width: 100%;
-
-  /* --- Sticky Header --- */
   position: sticky;
   top: 0;
-  z-index: 1000; /* Ensures it stays on top of other content */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* --- Logo Styling --- */
 .nav-logo {
-  color: #61dafb; /* React blue for a nice accent */
+  color: #61dafb;
   font-size: 24px;
   font-weight: bold;
   text-decoration: none;
 }
 
-/* --- Navigation Links Menu --- */
+/* --- Navigation Links Menu (Desktop) --- */
 .nav-menu {
   list-style-type: none;
   display: flex;
@@ -41,9 +39,9 @@
   height: 100%;
   color: white;
   text-decoration: none;
-  padding: 0 20px; /* Spacing between links */
+  padding: 0 20px;
   font-size: 16px;
-  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .nav-link:hover {
@@ -51,7 +49,7 @@
   color: #61dafb;
 }
 
-/* --- Dropdown Specific Styling --- */
+/* --- Dropdown Styling (Desktop) --- */
 .dropdown {
   position: relative;
   height: 100%;
@@ -61,7 +59,7 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
-  font-family: inherit; /* Use the same font as the rest of the site */
+  font-family: inherit;
 }
 
 .dropbtn:hover {
@@ -76,9 +74,9 @@
   min-width: 180px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
   z-index: 1;
-  border-radius: 8px; /* Rounded corners */
-  overflow: hidden; /* Ensures content respects the border radius */
-  margin-top: -1px; /* Aligns dropdown nicely */
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: -1px;
 }
 
 .dropdown-content a {
@@ -95,7 +93,84 @@
   color: #20232a;
 }
 
-/* This makes the dropdown appear on hover */
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+/* --- Hamburger Icon (Hidden on Desktop) --- */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 4px 0;
+  background-color: white;
+}
+
+
+/* ########################################## */
+/* ### MOBILE RESPONSIVE STYLES (THE FIX) ### */
+/* ########################################## */
+
+/* This media query applies styles ONLY when the screen is 768px wide or less */
+@media screen and (max-width: 768px) {
+
+  /* Show the hamburger icon */
+  .hamburger {
+    display: flex;
+  }
+  
+  /* Hide the desktop navigation links */
+  .nav-menu {
+    position: fixed;
+    left: -100%; /* Start off-screen */
+    top: 60px; /* Position below the navbar */
+    flex-direction: column;
+    background-color: #20232a;
+    width: 100%;
+    height: calc(100vh - 60px); /* Full height minus navbar */
+    text-align: center;
+    transition: left 0.3s ease-in-out; /* Smooth slide-in animation */
+    padding-top: 20px;
+  }
+  
+  /* When the menu is open, slide it into view */
+  .nav-menu.open {
+    left: 0;
+  }
+
+  .nav-item {
+    padding: 10px 0;
+    width: 100%;
+    height: auto;
+  }
+
+  .nav-link, .dropbtn {
+    width: 100%;
+    justify-content: center;
+    padding: 15px 0;
+  }
+
+  /* --- Mobile Dropdown Styles --- */
+  .dropdown {
+    width: 100%;
+  }
+
+  .dropdown-content {
+    display: none; /* Hide by default */
+    position: static; /* Remove absolute positioning */
+    box-shadow: none;
+    background-color: #282c34; /* Slightly different color to show nesting */
+    border-radius: 0;
+  }
+
+  /* On mobile, we show the dropdown content when its parent is hovered OR clicked */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
 }
