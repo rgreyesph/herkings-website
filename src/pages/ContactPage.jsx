@@ -96,7 +96,7 @@ function ContactPage() {
     setStatus('submitting');
     setMessage('');
 
-    const apiEndpoint = 'https://YOUR_API_ENDPOINT_URL_HERE/';
+    const apiEndpoint = 'https://l93j0w8de2.execute-api.ap-southeast-1.amazonaws.com/default/herkingsContactFormHandler';
 
     try {
       const response = await fetch(apiEndpoint, {
