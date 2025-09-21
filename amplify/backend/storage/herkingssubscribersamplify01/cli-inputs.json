@@ -1,0 +1,10 @@
+{
+  "resourceName": "herkingssubscribersamplify01",
+  "tableName": "herkingssubscribersamplify01",
+  "partitionKey": {
+    "fieldName": "email",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}
