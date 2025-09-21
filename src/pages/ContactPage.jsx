@@ -113,7 +113,7 @@ function ContactPage() {
     } catch (error) {
       console.error('There was an error!', error);
       setStatus('error');
-      setMessage('Something went wrong. Please try again.');
+      setMessage('Something went wrong. Please try again now.');
     }
   };
 
