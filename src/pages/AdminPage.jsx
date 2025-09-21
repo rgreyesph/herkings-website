@@ -11,7 +11,7 @@ function AdminPage({ signOut, user }) {
     // Fetch subscribers from our secure API
     async function fetchSubscribers() {
       try {
-        const apiName = 'herkingsAdminAPI'; // This is the name you gave in 'amplify add api'
+        const apiName = 'herkingswebsiteAdminAPI';
         const path = '/subscribers';
         const response = await API.get(apiName, path);
         setSubscribers(response);
