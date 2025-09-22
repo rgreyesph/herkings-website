@@ -5,11 +5,11 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   base: '/',
-  optimizeDeps: {
-    include: [
-      '@aws-amplify/api/rest',
-      '@aws-amplify/auth',
-      '@aws-amplify/ui-react'
-    ],
-  },
+  resolve: {
+    alias: {
+      // This alias is a known fix for a compatibility issue between
+      // AWS Amplify v6+ and the Vite bundler.
+      './runtimeConfig': './runtimeConfig.browser',
+    }
+  }
 })
