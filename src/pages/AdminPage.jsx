@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { API } from 'aws-amplify';
+import { API } from '@aws-amplify/api'; // <-- This is the corrected import
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 
@@ -8,11 +8,11 @@ function AdminPage({ signOut, user }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch subscribers from our secure API
     async function fetchSubscribers() {
       try {
         const apiName = 'herkingswebsiteAdminAPI';
         const path = '/subscribers';
+        // The API.get() call remains the same
         const response = await API.get(apiName, path);
         setSubscribers(response);
       } catch (err) {
@@ -21,7 +21,7 @@ function AdminPage({ signOut, user }) {
         setLoading(false);
       }
     }
-
+    
     fetchSubscribers();
   }, []);
 
@@ -29,7 +29,7 @@ function AdminPage({ signOut, user }) {
     <div>
       <h1>Admin Dashboard</h1>
       <p>Hello, {user.username}! <button onClick={signOut}>Sign Out</button></p>
-
+      
       <h2>Subscriber List</h2>
       {loading ? (
         <p>Loading...</p>
@@ -59,5 +59,4 @@ function AdminPage({ signOut, user }) {
   );
 }
 
-// This 'withAuthenticator' component handles the entire sign-in UI for you!
 export default withAuthenticator(AdminPage);
