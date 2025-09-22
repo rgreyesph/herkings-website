@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { API } from '@aws-amplify/api'; // <-- This is the corrected import
+// 1. Import the 'get' function specifically for REST APIs
+import { get } from '@aws-amplify/api/rest'; 
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 
@@ -12,9 +13,12 @@ function AdminPage({ signOut, user }) {
       try {
         const apiName = 'herkingswebsiteAdminAPI';
         const path = '/subscribers';
-        // The API.get() call remains the same
-        const response = await API.get(apiName, path);
-        setSubscribers(response);
+        
+        // 2. Use the new 'get' function syntax
+        const { body } = await get({ apiName, path }).response;
+        const items = await body.json();
+        
+        setSubscribers(items);
       } catch (err) {
         console.error('Error fetching subscribers:', err);
       } finally {
